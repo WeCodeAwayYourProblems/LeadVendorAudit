@@ -1,0 +1,3 @@
+[submodule "WebDriver"]
+	path = WebDriver
+	url = https://github.com/WeCodeAwayYourProblems/WebDriver
