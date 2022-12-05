@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using AuditCore;
 
 namespace Infrastructure.VendorData.Driver;

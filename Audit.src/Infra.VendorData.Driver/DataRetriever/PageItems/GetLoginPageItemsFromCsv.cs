@@ -1,9 +1,8 @@
-using System.IO;
 using CliHelperClass;
 using OpenQA.Selenium;
 
 namespace Infrastructure.VendorData.Driver;
-internal class GetLoginPageItemsFromCsv : WebDriverManipulator, ILoginPageInfo
+public class GetLoginPageItemsFromCsv : WebDriverManipulator, ILoginPageInfo
 {
    public GetLoginPageItemsFromCsv(string path)
    {

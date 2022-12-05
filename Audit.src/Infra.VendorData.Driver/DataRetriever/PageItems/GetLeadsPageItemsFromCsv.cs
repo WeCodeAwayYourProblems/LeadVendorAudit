@@ -2,7 +2,7 @@ using CliHelperClass;
 using OpenQA.Selenium;
 
 namespace Infrastructure.VendorData.Driver;
-internal class GetLeadsPageItemsFromCsv : WebDriverManipulator, ILeadsPageInfo
+public class GetLeadsPageItemsFromCsv : WebDriverManipulator, ILeadsPageInfo
 {
    public GetLeadsPageItemsFromCsv(string path)
    {

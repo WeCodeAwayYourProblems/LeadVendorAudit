@@ -1,19 +1,19 @@
 using AuditCore;
-using AuditInfrastructure;
 using CliHelperClass;
 
 namespace Infrastructure.VendorData.Driver;
 
 public class VendorDataRetrieval_WebDriver : IVendorDataRetrieval
 {
-   public VendorDataRetrieval_WebDriver(DateTime startDate, DateTime endDate, Credentials vendorSiteLogin, WebDriverManipulator driver)
+   public VendorDataRetrieval_WebDriver(DateTime startDate, DateTime endDate, PageItems page, Credentials vendorSiteLogin, WebDriverManipulator driver)
    {
       StartDate = startDate;
       EndDate = endDate;
       Logins = vendorSiteLogin;
       WebD = driver;
+      Page = page;
    }
-   public readonly PageItems Page = new();
+   public PageItems Page { get; }
    public DateTime EndDate { get; }
    public Credentials Logins { get; }
    public WebDriverManipulator WebD { get; private set; }
@@ -57,7 +57,7 @@ public class VendorDataRetrieval_WebDriver : IVendorDataRetrieval
       try
       { WebD.ClickOnElement(Page.LoginPage.ContinueButton, adjustWindow: false); }
       catch
-      { WebD.SendKeysToElement(Page.LoginPage.Pass, WebDriverManipulator.KeysEnum.Enter); }
+      { WebD.SendKeysToElement(Page.LoginPage.Pass, KeysEnum.Enter); }
       return true;
    }
    internal bool NavigateToAppropriatePage()
