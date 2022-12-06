@@ -87,7 +87,8 @@ public class VendorDataRetrieval_Driver : IVendorDataRetrieval
          var leads = WebD.FindAllElements(Page.LeadsPage.LeadsElements, adjustWindow: false);
 
          records = Parser.ParseLeadText(
-            leads.Where(item => item.Text.Length != 0)
+            leads
+            .Where(item => item.Text.Length != 0)
             .Select(item => item.Text));
       }
       catch
