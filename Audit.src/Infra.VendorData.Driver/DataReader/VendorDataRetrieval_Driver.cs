@@ -29,29 +29,17 @@ public class VendorDataRetrieval_Driver : IVendorDataRetrieval
       bool success = false;
       while (!success)
       {
-         if (!OpenVendorWebsite(Page.LoginPage.Url))
-         {
-            failureProtocols();
-            continue;
-         }
-         if (!LogIntoVendorSite(Logins))
-         {
-            failureProtocols();
-            continue;
-         }
-         if (!NavigateToAppropriatePage())
-         {
-            failureProtocols();
-            continue;
-         }
-         if (!ExtractHistoricalSalesData(StartDate, EndDate, out records))
+         bool opened = OpenVendorWebsite(Page.LoginPage.Url);
+         bool loggedIn = LogIntoVendorSite(Logins);
+         bool navigated = NavigateToAppropriatePage();
+         bool extracted = ExtractHistoricalSalesData(StartDate, EndDate, out records);
+         if (!opened || !loggedIn || !navigated || !extracted)
          {
             failureProtocols();
             continue;
          }
          success = true;
       }
-      WebD.CloseChrome();
       return records;
 
       void failureProtocols()
