@@ -8,6 +8,10 @@ public class PhoneNumber : IPhoneNumber
    {
       this.number = number;
    }
+   public PhoneNumber(int number)
+   {
+      this.number = $"{number}";
+   }
    private readonly string number;
    private int num;
    public int Number
