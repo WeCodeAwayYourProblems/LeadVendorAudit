@@ -8,11 +8,7 @@ public class LeadsPageInfoFromCsv : ILeadsPageInfo
    {
       // Object instantiation
       WebD = webD;
-      ReadCsv(pathToCsv);
-   }
 
-   private void ReadCsv(string pathToCsv)
-   {
       // CSV reading
       string[] lines = File.ReadAllLines(pathToCsv);
       int leadsElem = default;
@@ -43,8 +39,8 @@ public class LeadsPageInfoFromCsv : ILeadsPageInfo
    public By SetBy(string[] line) =>
    WebD.StringToBy(line[1], line[2]);
 
-   public By? LeadsElement { get; set; }
-   public By? NextPageButton { get; set; }
-   public string? NextPageUrl { get; set; }
+   public By LeadsElement { get; set; }
+   public By NextPageButton { get; set; }
+   public string NextPageUrl { get; set; }
    public WebDriverManipulator WebD { get; }
 }
