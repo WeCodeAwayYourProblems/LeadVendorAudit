@@ -1,7 +1,7 @@
 namespace Infrastructure.VendorData.Driver;
 public class PageItems
 {
-   public PageItems(GetLoginPageItemsFromCsv login, GetLeadsPageItemsFromCsv leads)
+   public PageItems(ILoginPageInfo login, ILeadsPageInfo leads)
    {
       LoginPage = new(login);
       LeadsPage = new(leads);
