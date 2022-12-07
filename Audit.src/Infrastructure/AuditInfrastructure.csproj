@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Infra.VendorData.Driver\Infrastructure.VendorData.Driver.csproj" />
     <ProjectReference Include="..\Core\AuditCore.csproj" />
   </ItemGroup>
 
