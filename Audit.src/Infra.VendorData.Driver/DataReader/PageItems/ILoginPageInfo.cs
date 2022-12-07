@@ -7,5 +7,5 @@ public interface ILoginPageInfo
    public By User { get; set; }
    public By Pass { get; set; }
    public By ContinueButton { get; set; }
-   string Url { get; set; }
+   public string Url { get; set; }
 }
