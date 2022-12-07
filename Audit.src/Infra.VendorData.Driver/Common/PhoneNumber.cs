@@ -31,7 +31,7 @@ public class PhoneNumber : IPhoneNumber
          else if (regexConverted)
             num = conversion2;
          else
-            throw new ArgumentException($"The Parameter called {nameof(number)} must be a string that matches the following regex:\n@\"(+1)?\\(?\\d{3}(\\)|\\s|-)?\\d{3}(\\s|-)?\\d{4}");
+            throw new ArgumentException($"The Parameter called {nameof(number)} must be a string that matches the following regex:\n@\"(+1)?\\(?\\d{3}(\\)|\\s|-)?\\d{3}(\\s|-)?\\d{4}\"");
       }
    }
 

@@ -12,7 +12,7 @@ public class LeadItem : ILeadItem
       CallDuration = duration;
    }
    public VendorRecord Vendor { get; set; }
-   public Region CallerRegion { get; set; }
+   public IRegion CallerRegion { get; set; }
    public DateTime DateTime { get; set; }
    public IPhoneNumber PhoneNumber { get; set; }
    public TimeSpan CallDuration { get; set; }
