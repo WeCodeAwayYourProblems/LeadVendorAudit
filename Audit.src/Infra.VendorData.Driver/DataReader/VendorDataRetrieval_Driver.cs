@@ -1,4 +1,5 @@
 using AuditCore;
+using AuditInfrastructure;
 using CliHelperClass;
 
 namespace Infrastructure.VendorData.Driver;
