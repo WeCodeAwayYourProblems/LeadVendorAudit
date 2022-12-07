@@ -6,7 +6,6 @@ public class PageItems
       LoginPage = new(login);
       LeadsPage = new(leads);
    }
-   private readonly string RelativePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/CS_area/LeadVendorAudit/LeadVendorAudit.src/Infrastructure/VendorData/VendorDataRetrieval/PageItems/";
    public LoginPage LoginPage { get; }
    public LeadsPage LeadsPage { get; }
 }
