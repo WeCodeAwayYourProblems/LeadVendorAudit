@@ -3,9 +3,9 @@ using CliHelperClass;
 
 namespace Infrastructure.VendorData.Driver;
 
-public class VendorDataRetrieval_Driver : IVendorDataRetrieval
+public class VendorDataReader_Driver : IVendorDataRetrieval
 {
-   public VendorDataRetrieval_Driver(ILeadDataParser parser, VendorRecord vendor, DateTime startDate, DateTime endDate, PageItems page, Credentials vendorSiteLogin, WebDriverManipulator driver)
+   public VendorDataReader_Driver(ILeadDataParser parser, VendorRecord vendor, DateTime startDate, DateTime endDate, PageItems page, Credentials vendorSiteLogin, WebDriverManipulator driver)
    {
       StartDate = startDate;
       EndDate = endDate;
@@ -66,6 +66,9 @@ public class VendorDataRetrieval_Driver : IVendorDataRetrieval
    }
    internal bool NavigateToAppropriatePage()
    {
+      bool clicked = WebD.ClickedOnElement(Page.LeadsPage.NextPageButton, adjustWindow: false, multipleTries: true, shortenImplicitWaitBy: WebDriverManipulator.ImplicitWait);
+      if (!clicked)
+         WebD.NavigateToUrl(Page.LeadsPage.NextPageUrl, usualWay: true);
       return true;
    }
    internal bool ExtractHistoricalSalesData(DateTime startingDate, DateTime endingDate, out IEnumerable<LeadItem> records)
