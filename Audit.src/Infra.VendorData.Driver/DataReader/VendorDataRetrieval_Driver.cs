@@ -66,16 +66,16 @@ public class VendorDataReader_Driver : IVendorDataRetrieval
    }
    internal bool NavigateToAppropriatePage()
    {
-      bool clicked = WebD.ClickedOnElement(Page.LeadsPage.NextPageButton, adjustWindow: false, multipleTries: true, shortenImplicitWaitBy: WebDriverManipulator.ImplicitWait);
+      bool clicked = WebD.ClickedOnElement(Page.LeadsPage.NextPageButton!, adjustWindow: false, multipleTries: true, shortenImplicitWaitBy: WebDriverManipulator.ImplicitWait);
       if (!clicked)
-         WebD.NavigateToUrl(Page.LeadsPage.NextPageUrl, usualWay: true);
+         WebD.NavigateToUrl(Page.LeadsPage.NextPageUrl!, usualWay: true);
       return true;
    }
    internal bool ExtractHistoricalSalesData(DateTime startingDate, DateTime endingDate, out IEnumerable<LeadItem> records)
    {
       try
       {
-         var leads = WebD.FindAllElements(Page.LeadsPage.LeadsElements, adjustWindow: false);
+         var leads = WebD.FindAllElements(Page.LeadsPage.LeadsElements!, adjustWindow: false);
 
          records = Parser.ParseLeadText(
             leads

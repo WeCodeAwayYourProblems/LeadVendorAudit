@@ -10,7 +10,7 @@ public class LeadsPage
       NextPageUrl = info.NextPageUrl;
    }
 
-   public By LeadsElements { get; }
-   public By NextPageButton { get; }
-   public string NextPageUrl { get; }
+   public By? LeadsElements { get; }
+   public By? NextPageButton { get; }
+   public string? NextPageUrl { get; }
 }
