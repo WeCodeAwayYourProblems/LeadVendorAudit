@@ -1,9 +1,10 @@
+using AuditCore;
 using AuditInfrastructure;
 
 namespace Infrastructure.VendorData.Driver
 {
    public interface ILeadDataParser
    {
-      public List<LeadItem> ParseLeadText(IEnumerable<string> leadStrings);
+      public List<ILeadItem> ParseLeadText(IEnumerable<string> leadStrings);
    }
 }

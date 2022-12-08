@@ -17,9 +17,9 @@ public class ReadVendorData_Driver : IVendorDataReader
 
    public ChromeDriver AccessChromeDriver() =>
       WebD.Chrome!;
-   public IEnumerable<LeadItem> VendorData()
+   public IEnumerable<ILeadItem> VendorData()
    {
-      IEnumerable<LeadItem> records = new List<LeadItem>();
+      IEnumerable<ILeadItem> records = new List<ILeadItem>();
       bool success = false;
       while (!success)
       {
@@ -65,7 +65,7 @@ public class ReadVendorData_Driver : IVendorDataReader
          WebD.NavigateToUrl(Page.LeadsPage.NextPageUrl!, usualWay: true);
       return true;
    }
-   internal bool ExtractHistoricalSalesData(DateTime startingDate, DateTime endingDate, out IEnumerable<LeadItem> records)
+   internal bool ExtractHistoricalSalesData(DateTime startingDate, DateTime endingDate, out IEnumerable<ILeadItem> records)
    {
       try
       {

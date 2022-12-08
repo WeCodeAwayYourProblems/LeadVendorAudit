@@ -1,8 +1,8 @@
-using AuditInfrastructure;
+using AuditCore;
 
 namespace Infrastructure.VendorData.Driver;
 
 public interface IVendorDataReader
 {
-   IEnumerable<LeadItem> VendorData();
+   IEnumerable<ILeadItem> VendorData();
 }

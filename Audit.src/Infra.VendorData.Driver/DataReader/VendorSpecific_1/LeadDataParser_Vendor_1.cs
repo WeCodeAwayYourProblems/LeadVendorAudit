@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using AuditCore;
 using AuditInfrastructure;
 
 namespace Infrastructure.VendorData.Driver;
@@ -26,9 +27,9 @@ public class LeadDataParser_Vendor_1 : ILeadDataParser
    private string TimeDeterminer { get; }
    private string DateDeterminer { get; }
 
-   public List<LeadItem> ParseLeadText(IEnumerable<string> leadStrings)
+   public List<ILeadItem> ParseLeadText(IEnumerable<string> leadStrings)
    {
-      List<LeadItem> list = new();
+      List<ILeadItem> list = new();
 
       // Each line must be split by the delimiter
       List<string[]> parsedLines = new();
