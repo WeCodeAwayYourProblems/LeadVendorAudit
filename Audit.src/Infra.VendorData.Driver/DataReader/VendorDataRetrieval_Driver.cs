@@ -1,19 +1,22 @@
 using AuditCore;
 using AuditInfrastructure;
 using CliHelperClass;
+using OpenQA.Selenium.Chrome;
 
 namespace Infrastructure.VendorData.Driver;
 
-public class VendorDataReader_Driver : IVendorDataRetrieval
+public class ReadVendorData_Driver : IVendorDataRetrieval
 {
    public required ILeadDataParser Parser { get; set; }
-   public required VendorRecord Vendor { get; set; }
+   public required IVendorRecord Vendor { get; set; }
    public required IPageItems Page { get; set; }
-   public required DateTime EndDate { get; set; }
-   public required Credentials Logins { get; set; }
-   public required WebDriverManipulator WebD { get; set; }
+   public required ICredentials Logins { get; set; }
    public required DateTime StartDate { get; set; }
+   public required DateTime EndDate { get; set; }
+   public WebDriverManipulator WebD { get; } = new();
 
+   public ChromeDriver AccessChromeDriver() =>
+      WebD.Chrome!;
    public IEnumerable<LeadItem> VendorData()
    {
       IEnumerable<LeadItem> records = new List<LeadItem>();
@@ -45,7 +48,7 @@ public class VendorDataReader_Driver : IVendorDataRetrieval
          return false;
       return true;
    }
-   internal bool LogIntoVendorSite(Credentials creds)
+   internal bool LogIntoVendorSite(ICredentials creds)
    {
       WebD.SendKeysToElement(Page.LoginPage.User, creds.Username);
       WebD.SendKeysToElement(Page.LoginPage.Pass, creds.Password);
