@@ -1,13 +1,11 @@
 using System.Text.RegularExpressions;
 using AuditInfrastructure;
-using AuditCore;
 
 namespace Infrastructure.VendorData.Driver;
 public class LeadDataParser_Vendor_1 : ILeadDataParser
 {
-   public LeadDataParser_Vendor_1(string vendorName, string errorLogPath)
+   public LeadDataParser_Vendor_1(string errorLogPath)
    {
-      VendorName = vendorName;
       Delimiter = new Regex(@"\r\n|\n\r|\r|\n");
       TimeDeterminer = @"((a|p)m)|:";
       DateDeterminer = @"/";
@@ -16,14 +14,17 @@ public class LeadDataParser_Vendor_1 : ILeadDataParser
       LeadDetail_Duration = @":.* \$";
       ErrorLogPath = errorLogPath;
    }
-   public Regex Delimiter { get; }
-   public string VendorName { get; }
-   private string TimeDeterminer { get; }
-   private string DateDeterminer { get; }
+   // Public items
+   public required string VendorName { get; init; }
    public string LeadDetail_Region { get; }
    public string LeadDetail_Phone { get; }
    public string LeadDetail_Duration { get; }
    public string ErrorLogPath { get; }
+
+   // Private items
+   private Regex Delimiter { get; }
+   private string TimeDeterminer { get; }
+   private string DateDeterminer { get; }
 
    public List<LeadItem> ParseLeadText(IEnumerable<string> leadStrings)
    {
