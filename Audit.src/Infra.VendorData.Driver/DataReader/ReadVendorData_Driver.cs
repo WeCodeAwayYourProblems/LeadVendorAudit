@@ -7,13 +7,13 @@ namespace Infrastructure.VendorData.Driver;
 
 public class ReadVendorData_Driver : IVendorDataReader
 {
-   public required ILeadDataParser Parser { get; set; }
-   public required IVendorRecord Vendor { get; set; }
-   public required IPageItems Page { get; set; }
-   public required ICredentials Logins { get; set; }
-   public required DateTime StartDate { get; set; }
-   public required DateTime EndDate { get; set; }
-   public WebDriverManipulator WebD { get; } = new();
+   public required ILeadDataParser Parser { get; init; }
+   public required IVendorRecord Vendor { get; init; }
+   public required IPageItems Page { get; init; }
+   public required ICredentials Logins { get; init; }
+   public required DateTime StartDate { get; init; }
+   public required DateTime EndDate { get; init; }
+   public required WebDriverManipulator WebD { get; init; }
 
    public ChromeDriver AccessChromeDriver() =>
       WebD.Chrome!;
