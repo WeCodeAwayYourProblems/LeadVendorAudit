@@ -5,7 +5,7 @@ using OpenQA.Selenium.Chrome;
 
 namespace Infrastructure.VendorData.Driver;
 
-public class ReadVendorData_Driver : IVendorDataRetrieval
+public class ReadVendorData_Driver : IVendorDataReader
 {
    public required ILeadDataParser Parser { get; set; }
    public required IVendorRecord Vendor { get; set; }
