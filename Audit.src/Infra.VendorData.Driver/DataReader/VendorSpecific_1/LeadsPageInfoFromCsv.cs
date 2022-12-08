@@ -4,11 +4,12 @@ using OpenQA.Selenium;
 namespace Infrastructure.VendorData.Driver;
 public class LeadsPageInfoFromCsv : ILeadsPageInfo
 {
-   public LeadsPageInfoFromCsv(WebDriverManipulator webD, string pathToCsv)
+   public By LeadsElement { get; set; }
+   public By NextPageButton { get; set; }
+   public string NextPageUrl { get; set; }
+   public required WebDriverManipulator WebD { get; init; }
+   public LeadsPageInfoFromCsv(string pathToCsv)
    {
-      // Object instantiation
-      WebD = webD;
-
       // CSV reading
       string[] lines = File.ReadAllLines(pathToCsv);
       int leadsElem = default;
@@ -38,9 +39,4 @@ public class LeadsPageInfoFromCsv : ILeadsPageInfo
 
    public By SetBy(string[] line) =>
    WebD.StringToBy(line[1], line[2]);
-
-   public By LeadsElement { get; set; }
-   public By NextPageButton { get; set; }
-   public string NextPageUrl { get; set; }
-   public WebDriverManipulator WebD { get; }
 }
