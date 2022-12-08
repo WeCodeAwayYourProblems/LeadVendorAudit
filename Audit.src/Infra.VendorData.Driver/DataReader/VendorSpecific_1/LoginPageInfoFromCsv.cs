@@ -2,11 +2,16 @@ using CliHelperClass;
 using OpenQA.Selenium;
 
 namespace Infrastructure.VendorData.Driver;
-public class LoginPageInfoFromCsv : WebDriverManipulator, ILoginPageInfo
+public class LoginPageInfoFromCsv : ILoginPageInfo
 {
-   public LoginPageInfoFromCsv(string path)
+   public By User { get; set; }
+   public By Pass { get; set; }
+   public By ContinueButton { get; set; }
+   public string Url { get; set; }
+   public required WebDriverManipulator WebD { get; init; }
+   public LoginPageInfoFromCsv(string pathToCsv)
    {
-      string[] lines = File.ReadAllLines(path);
+      string[] lines = File.ReadAllLines(pathToCsv);
       int userIndex = default;
       int passIndex = default;
       int buttonIndex = default;
@@ -37,16 +42,6 @@ public class LoginPageInfoFromCsv : WebDriverManipulator, ILoginPageInfo
       Url = url;
    }
 
-   public By User { get; set; }
-   public By Pass { get; set; }
-   public By ContinueButton { get; set; }
-   public string Url { get; set; }
-
    public By SetBy(string[] line) =>
-   StringToBy(line[1], line[2]);
-
-   public override void RecordPerformanceToLog(string logFileName, Dictionary<string, TimeSpan> timeStampsWithDescription)
-   {
-      throw new NotImplementedException();
-   }
+   WebD.StringToBy(line[1], line[2]);
 }
