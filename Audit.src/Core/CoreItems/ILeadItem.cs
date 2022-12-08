@@ -1,7 +1,7 @@
 namespace AuditCore;
 public interface ILeadItem
 {
-   public VendorRecord Vendor { get; set; }
+   public IVendorRecord Vendor { get; init; }
    public IRegion CallerRegion { get; set; }
    public DateTime DateTime { get; set; }
    public IPhoneNumber PhoneNumber { get; set; }

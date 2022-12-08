@@ -1,5 +1,5 @@
 namespace Infrastructure.VendorData.Driver;
-public class PageItems
+public class PageItems : IPageItems
 {
    public PageItems(ILoginPageInfo login, ILeadsPageInfo leads)
    {

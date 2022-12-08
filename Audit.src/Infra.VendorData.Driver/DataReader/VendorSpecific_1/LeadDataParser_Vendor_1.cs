@@ -35,7 +35,7 @@ public class LeadDataParser_Vendor_1 : ILeadDataParser
          parsedLines.Add(Delimiter.Split(lead));
 
       // Instantiate each item to be included in the lead item object
-      VendorRecord vendor = new(VendorName);
+      VendorRecord vendor = new() { VendorName = VendorName };
       Region? region = default;
       PhoneNumber? number = default;
       DateTime date = default;
@@ -49,6 +49,7 @@ public class LeadDataParser_Vendor_1 : ILeadDataParser
       foreach (var line in parsedLines)
       {
          for (var item = 0; item < line.Length; item++) // All magic numbers here are targeted toward a specific
+         {
             switch (line[item])
             {
                // Set the Datetime
@@ -68,8 +69,9 @@ public class LeadDataParser_Vendor_1 : ILeadDataParser
                   duration = TimeSpan.Parse(line[item].Split(" ")[0]);
                   break;
             }
+         }
 
-         // If one of the parsing doesn't work, we don't want to add that item to the list, and we don't want to break the entire application
+         // If one of the parsing cases doesn't work, we don't want to add that item to the list, and we don't want to break the entire application
          if (region is null || date.Equals(dateDefault) || number is null || duration.Equals(spanDefault))
          {
             // We need to log the error so that we don't miss anything.
@@ -77,7 +79,16 @@ public class LeadDataParser_Vendor_1 : ILeadDataParser
             continue;
          }
 
-         list.Add(new LeadItem(vendor, region!, date, number!, duration));
+         LeadItem lead = new()
+         {
+            Vendor = vendor,
+            CallerRegion = region!,
+            DateTime = date,
+            PhoneNumber = number!,
+            CallDuration = duration
+         };
+
+         list.Add(lead);
       }
       return list;
    }

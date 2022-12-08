@@ -1,3 +1,7 @@
 namespace AuditInfrastructure;
 
-public record Credentials(string Username, string Password);
+public class Credentials : ICredentials
+{
+   public required string Username { get; set; }
+   public required string Password { get; set; }
+}

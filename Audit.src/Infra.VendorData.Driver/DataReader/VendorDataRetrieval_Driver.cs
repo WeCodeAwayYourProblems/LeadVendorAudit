@@ -6,23 +6,13 @@ namespace Infrastructure.VendorData.Driver;
 
 public class VendorDataReader_Driver : IVendorDataRetrieval
 {
-   public VendorDataReader_Driver(ILeadDataParser parser, VendorRecord vendor, DateTime startDate, DateTime endDate, PageItems page, Credentials vendorSiteLogin, WebDriverManipulator driver)
-   {
-      StartDate = startDate;
-      EndDate = endDate;
-      Logins = vendorSiteLogin;
-      WebD = driver;
-      Page = page;
-      Vendor = vendor;
-      Parser = parser;
-   }
-   public ILeadDataParser Parser { get; }
-   public VendorRecord Vendor { get; }
-   public PageItems Page { get; }
-   public DateTime EndDate { get; }
-   public Credentials Logins { get; }
-   public WebDriverManipulator WebD { get; private set; }
-   public DateTime StartDate { get; }
+   public required ILeadDataParser Parser { get; set; }
+   public required VendorRecord Vendor { get; set; }
+   public required IPageItems Page { get; set; }
+   public required DateTime EndDate { get; set; }
+   public required Credentials Logins { get; set; }
+   public required WebDriverManipulator WebD { get; set; }
+   public required DateTime StartDate { get; set; }
 
    public IEnumerable<LeadItem> VendorData()
    {
@@ -36,14 +26,14 @@ public class VendorDataReader_Driver : IVendorDataRetrieval
          bool extracted = ExtractHistoricalSalesData(StartDate, EndDate, out records);
          if (!opened || !loggedIn || !navigated || !extracted)
          {
-            failureProtocols();
+            failureProtocol();
             continue;
          }
          success = true;
       }
       return records;
 
-      void failureProtocols()
+      void failureProtocol()
       {
          WebD.CloseChrome();
       }
