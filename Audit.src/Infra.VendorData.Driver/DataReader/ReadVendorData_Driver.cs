@@ -10,9 +10,9 @@ public class ReadVendorData_Driver : LoginProtocol_RW, IVendorDataReader
 
    public ChromeDriver AccessChromeDriver() =>
       WebD.Chrome!;
-   public IEnumerable<ILeadItem> VendorData()
+   public IEnumerable<ICallLead> VendorData()
    {
-      IEnumerable<ILeadItem> records = new List<ILeadItem>();
+      IEnumerable<ICallLead> records = new List<ICallLead>();
       bool success = false;
       while (!success)
       {
@@ -34,7 +34,7 @@ public class ReadVendorData_Driver : LoginProtocol_RW, IVendorDataReader
          WebD.CloseChrome();
       }
    }
-   public bool ExtractHistoricalSalesData(DateTime startingDate, DateTime endingDate, out IEnumerable<ILeadItem> records)
+   public bool ExtractHistoricalSalesData(DateTime startingDate, DateTime endingDate, out IEnumerable<ICallLead> records)
    {
       try
       {
@@ -47,7 +47,7 @@ public class ReadVendorData_Driver : LoginProtocol_RW, IVendorDataReader
       }
       catch
       {
-         records = new List<LeadItem>();
+         records = new List<ICallLead>();
          return false;
       }
       return true;

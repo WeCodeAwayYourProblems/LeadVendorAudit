@@ -1,7 +1,7 @@
 using AuditCore;
 namespace AuditInfrastructure;
 
-public class LeadItem : ILeadItem
+public class CallLead : ICallLead
 {
    public required IVendorRecord Vendor { get; init; }
    public required IRegion CallerRegion { get; set; }
@@ -9,10 +9,5 @@ public class LeadItem : ILeadItem
    public required IPhoneNumber PhoneNumber { get; set; }
    public TimeSpan CallDuration { get; set; }
    public bool Billability { get; set; }
-   public required string BillabilityReasoning { get; set; }
-
-   public static implicit operator List<object>(LeadItem v)
-   {
-      throw new NotImplementedException();
-   }
+   public string BillabilityReasoning { get; set; } = "";
 }

@@ -5,7 +5,7 @@ namespace Infrastructure.VendorData.Driver;
 
 public class WriteDataToVendor_Driver : LoginProtocol_RW, IVendorDataWriter
 {
-   public bool WriteDataToVendor(IEnumerable<ILeadItem> leads)
+   public bool WriteDataToVendor(IEnumerable<ICallLead> leads)
    {
       bool success = false;
       while (!success)
@@ -27,7 +27,7 @@ public class WriteDataToVendor_Driver : LoginProtocol_RW, IVendorDataWriter
       }
    }
 
-   public bool EnterFormulatedSalesData(DateTime startDate, DateTime endDate, IEnumerable<ILeadItem> leads)
+   public bool EnterFormulatedSalesData(DateTime startDate, DateTime endDate, IEnumerable<ICallLead> leads)
    {
       throw new NotImplementedException();
    }

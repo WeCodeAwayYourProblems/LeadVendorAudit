@@ -27,9 +27,9 @@ public class LeadDataParser_Vendor_1 : ILeadDataParser
    private string TimeDeterminer { get; }
    private string DateDeterminer { get; }
 
-   public List<ILeadItem> ParseLeadText(IEnumerable<string> leadStrings)
+   public List<ICallLead> ParseLeadText(IEnumerable<string> leadStrings)
    {
-      List<ILeadItem> list = new();
+      List<ICallLead> list = new();
 
       // Each line must be split by the delimiter
       List<string[]> parsedLines = new();
@@ -81,7 +81,7 @@ public class LeadDataParser_Vendor_1 : ILeadDataParser
             continue;
          }
 
-         LeadItem lead = new()
+         CallLead lead = new()
          {
             Vendor = vendor,
             CallerRegion = region!,

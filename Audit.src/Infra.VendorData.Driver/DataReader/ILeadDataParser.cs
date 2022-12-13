@@ -5,6 +5,6 @@ namespace Infrastructure.VendorData.Driver
 {
    public interface ILeadDataParser
    {
-      public List<ILeadItem> ParseLeadText(IEnumerable<string> leadStrings);
+      public List<ICallLead> ParseLeadText(IEnumerable<string> leadStrings);
    }
 }

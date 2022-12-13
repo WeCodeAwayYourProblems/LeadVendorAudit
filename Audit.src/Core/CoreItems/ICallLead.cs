@@ -1,5 +1,5 @@
 namespace AuditCore;
-public interface ILeadItem
+public interface ICallLead
 {
    public IVendorRecord Vendor { get; init; }
    public IRegion CallerRegion { get; set; }
