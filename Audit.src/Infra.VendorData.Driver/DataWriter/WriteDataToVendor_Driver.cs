@@ -1,5 +1,4 @@
 using AuditCore;
-using OpenQA.Selenium.Chrome;
 
 namespace Infrastructure.VendorData.Driver;
 
