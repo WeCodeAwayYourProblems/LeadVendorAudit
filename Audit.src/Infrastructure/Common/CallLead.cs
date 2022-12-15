@@ -9,5 +9,6 @@ public class CallLead : ICallLead
    public required IPhoneNumber PhoneNumber { get; set; }
    public TimeSpan CallDuration { get; set; }
    public bool Billability { get; set; }
-   public string BillabilityReasoning { get; set; } = "";
+   public string? BillabilityReasoning { get; set; }
+   public string? Notes { get; set; }
 }
