@@ -16,7 +16,7 @@ public class ReadVendorData_Driver : LoginProtocol_RW, IVendorDataReader
       while (!success)
       {
          bool opened = OpenVendorWebsite(Page.LoginPage.Url);
-         bool loggedIn = LogIntoVendorSite(Logins);
+         bool loggedIn = LogIntoVendorSite(Logins!);
          bool navigated = NavigateToAppropriatePage();
          bool extracted = ExtractHistoricalSalesData(StartDate, EndDate, out records);
          if (!opened || !loggedIn || !navigated || !extracted)

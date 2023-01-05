@@ -10,8 +10,8 @@ public abstract class LoginProtocol_RW
    public required DateTime EndDate { get; init; }
    public required IVendorRecord Vendor { get; init; }
    public required IPageItems Page { get; init; }
-   public required ICredentials Logins { get; init; }
    public required WebDriverManipulator WebD { get; init; }
+   public ICredentials? Logins { get; set; }
 
    public virtual bool OpenVendorWebsite(string url)
    {
@@ -20,15 +20,30 @@ public abstract class LoginProtocol_RW
          return false;
       return true;
    }
-   public virtual bool LogIntoVendorSite(ICredentials creds)
+   public virtual bool LogIntoVendorSite(ICredentials logins)
    {
-      WebD.SendKeysToElement(Page.LoginPage.User, creds.Username);
-      WebD.SendKeysToElement(Page.LoginPage.Pass, creds.Password);
+      // Enter Username
+      WebD.SendKeysToElement(Page.LoginPage.User, logins.Username);
+      // Enter Password
+      WebD.SendKeysToElement(Page.LoginPage.Pass, logins.Password);
+      // Try clicking the enter button
       try
-      { WebD.ClickOnElement(Page.LoginPage.ContinueButton, adjustWindow: false); }
+      {
+         PressEnterOnCredentialsPage();
+      }
       catch
-      { WebD.SendKeysToElement(Page.LoginPage.Pass, KeysEnum.Enter); }
+      { return false; }
       return true;
+
+      // Local Function
+      void PressEnterOnCredentialsPage()
+      {
+         try
+         { WebD.ClickOnElement(Page.LoginPage.ContinueButton, adjustWindow: false); }
+         // On failure, press enter on the password element
+         catch
+         { WebD.SendKeysToElement(Page.LoginPage.Pass, KeysEnum.Enter); }
+      }
    }
    public virtual bool NavigateToAppropriatePage()
    {
