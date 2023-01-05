@@ -1,7 +1,7 @@
 using OpenQA.Selenium;
 
 namespace Infrastructure.VendorData.Driver;
-public class LoginPage
+public class LoginPage : ILoginPage
 {
    public LoginPage(ILoginPageInfo info)
    {

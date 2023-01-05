@@ -78,7 +78,8 @@ public class WriteDataToVendor_Driver : LoginProtocol_RW, IVendorDataWriter
 
    public bool NavigatedToFirstPageOfLeads()
    {
-      throw new NotImplementedException();
+      WebD.Chrome!.Url = Page.LeadsPage.FirstPageOfLeads;
+      return true;
    }
 
    public void NavigateToNextPage(int pageNumber)
