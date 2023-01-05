@@ -6,4 +6,5 @@ public interface ILeadsPageInfo
    public By LeadsElement { get; set; }
    public By NextPageButton { get; set; }
    public string NextPageUrl { get; set; }
+   public string FirstPageOfLeads { get; }
 }

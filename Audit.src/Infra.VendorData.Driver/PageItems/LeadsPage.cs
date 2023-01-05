@@ -8,6 +8,7 @@ public class LeadsPage : ILeadsPage
       LeadsElements = info.LeadsElement;
       NextPageButton = info.NextPageButton;
       NextPageUrl = info.NextPageUrl;
+      FirstPageOfLeads = info.FirstPageOfLeads;
    }
 
    public By? LeadsElements { get; }
