@@ -1,10 +1,6 @@
 #b
 bin/
 
-#i
-.info/
-.info**
-
 #o
 obj/
 .omnisharp/
