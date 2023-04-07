@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\AuditCore.csproj" />
+    <ProjectReference Include="..\AppLayer\AppLayer.csproj" />
     <ProjectReference Include="..\Infrastructure\AuditInfrastructure.csproj" />
     <ProjectReference Include="..\..\WebDriver\src\CliHelperClass.csproj" />
   </ItemGroup>

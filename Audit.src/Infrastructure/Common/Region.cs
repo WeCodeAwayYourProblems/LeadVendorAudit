@@ -3,7 +3,7 @@ using AuditCore;
 namespace AuditInfrastructure;
 public class Region : IRegion
 {
-   // Ctors: Zip as integer
+   // ctors: Zip as integer
    public Region(string country, string state, string city, int zip, string marketName) : this(state, city, zip, marketName)
    { Country = country; }
    public Region(string state, string city, int zip, string marketName) : this(city, zip, marketName)
