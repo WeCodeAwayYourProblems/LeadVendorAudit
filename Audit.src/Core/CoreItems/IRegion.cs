@@ -2,5 +2,5 @@ namespace AuditCore;
 
 public interface IRegion
 {
-   public int ZipCode { get; set; }
+   public string MarketName { get; set; }
 }
