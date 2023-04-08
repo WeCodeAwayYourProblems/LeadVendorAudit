@@ -2,7 +2,7 @@ using CoreLogic;
 
 namespace Infrastructure.VendorData.Driver;
 
-public interface IVendorDataWriter
+public interface ICallVendorDataWriter
 {
    public bool WriteDataToVendor(IEnumerable<ICallLead> leads);
 }
