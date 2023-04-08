@@ -1,4 +1,4 @@
-using AuditCore;
+using CoreLogic;
 namespace AuditInfrastructure;
 
 public class CallLead : ICallLead
@@ -8,7 +8,6 @@ public class CallLead : ICallLead
    public DateTime DateTime { get; set; }
    public required IPhoneNumber PhoneNumber { get; set; }
    public TimeSpan CallDuration { get; set; }
-   public bool Billability { get; set; }
-   public string? BillabilityReasoning { get; set; }
+   public Billability? Billability { get; set; }
    public string? Notes { get; set; }
 }

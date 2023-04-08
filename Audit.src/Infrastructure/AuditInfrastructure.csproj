@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\AppLayer\AppLayer.csproj" />
+    <ProjectReference Include="..\Core\AuditCore.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

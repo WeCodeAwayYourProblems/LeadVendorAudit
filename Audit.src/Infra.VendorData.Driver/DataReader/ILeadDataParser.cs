@@ -1,4 +1,4 @@
-using AuditCore;
+using CoreLogic;
 
 namespace Infrastructure.VendorData.Driver
 {

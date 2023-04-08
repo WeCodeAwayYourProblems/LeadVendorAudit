@@ -1,4 +1,4 @@
-using AuditCore;
+using CoreLogic;
 using System.Text.RegularExpressions;
 
 namespace AuditInfrastructure;

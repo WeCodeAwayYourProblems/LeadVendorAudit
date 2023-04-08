@@ -1,4 +1,4 @@
-using AuditCore;
+using CoreLogic;
 using AuditInfrastructure;
 using CliHelperClass;
 

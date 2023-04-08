@@ -1,4 +1,4 @@
-namespace AuditCore;
+namespace CoreLogic;
 
 public interface IRegion
 {

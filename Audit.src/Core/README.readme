@@ -1,0 +1,7 @@
+The core is the end-all of dependencies in this project.
+All other layers of this project can be dependent on this project.
+
+AuditCore.csproj CANNOT EVER be dependent on any other project. 
+If it is, that dependency tree could break C# and .NET altogether by causing a circular dependency tree.
+
+AuditCore is the root of the dependency tree and cannot be dependent on any other part of the project.

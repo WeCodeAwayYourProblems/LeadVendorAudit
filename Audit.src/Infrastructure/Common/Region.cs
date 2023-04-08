@@ -1,4 +1,4 @@
-using AuditCore;
+using CoreLogic;
 
 namespace AuditInfrastructure;
 public class Region : IRegion

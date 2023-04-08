@@ -1,4 +1,4 @@
-using AuditCore;
+using CoreLogic;
 using OpenQA.Selenium.Chrome;
 
 namespace Infrastructure.VendorData.Driver;
