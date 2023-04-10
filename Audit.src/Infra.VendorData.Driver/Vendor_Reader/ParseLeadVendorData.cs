@@ -6,7 +6,7 @@ namespace Infrastructure.VendorData.Driver;
 public class ParseLeadVendorData : ILeadDataParser
 {
    // These parameter names cannot change because they are copied in another file
-   public ParseLeadVendorData(Regex lineDelimiter, Regex timeRegex, Regex dateRegex, Regex leadRegionRegex, Regex leadPhoneRegex, Regex leadDurationRegex, string vendorName, string errorLogPath_AbsolutePath)
+   public ParseLeadVendorData(Regex lineDelimiter, Regex timeRegex, Regex dateRegex, Regex leadRegionRegex, Regex leadPhoneRegex, Regex leadDurationRegex, string vendorName, string errorLogPath_Absolute_csv, VendorParser parser)
    {
       Delimiter = lineDelimiter;
       TimeDeterminer = timeRegex;
@@ -14,11 +14,12 @@ public class ParseLeadVendorData : ILeadDataParser
       LeadDetail_Region = leadRegionRegex;
       LeadDetail_Phone = leadPhoneRegex;
       LeadDetail_Duration = leadDurationRegex;
-      ErrLogPath = errorLogPath_AbsolutePath;
+      ErrLogPath = errorLogPath_Absolute_csv;
       Vendor = vendorName;
+      Parser = parser;
    }
    // Public properties
-   public string Vendor { get; init; }
+   public string Vendor { get; }
    public Regex LeadDetail_Region { get; }
    public Regex LeadDetail_Phone { get; }
    public Regex LeadDetail_Duration { get; }
@@ -28,7 +29,7 @@ public class ParseLeadVendorData : ILeadDataParser
    public Regex DateDeterminer { get; }
 
    // Object properties
-   public VendorParser Parser_Vendor1 = new();
+   public VendorParser Parser { get; }
 
    public List<ICallLead> ParseLeadText(IEnumerable<string> leadStrings)
    {
@@ -53,7 +54,7 @@ public class ParseLeadVendorData : ILeadDataParser
       // Each item in each line must be parsed based on the vendor-specific parameters
       foreach (var line in splitLines)
       {
-         Parser_Vendor1.ParseVendor1(ref region, ref number, ref date, ref duration, TimeDeterminer, DateDeterminer, LeadDetail_Region, LeadDetail_Phone, LeadDetail_Duration, line);
+         Parser.ParseVendor1(ref region, ref number, ref date, ref duration, TimeDeterminer, DateDeterminer, LeadDetail_Region, LeadDetail_Phone, LeadDetail_Duration, line);
 
          if (region is null || number is null || date.Equals(dateDefault) || duration.Equals(spanDefault))
          {
@@ -77,6 +78,6 @@ public class ParseLeadVendorData : ILeadDataParser
    }
 
    public void VendorDataParserErrorLog(string erroneousLeadText) =>
-      File.AppendAllText(ErrLogPath, erroneousLeadText + "," + ErrorLogMessage);
+      File.AppendAllText(ErrLogPath, erroneousLeadText + "," + ErrorLogMessage + "\n");
    private string ErrorLogMessage = $"The lead data from the website changed and the parser no longer works correctly. Location: {nameof(ParseLeadText)} method in the {nameof(VendorParser)} class.";
 }
