@@ -3,9 +3,9 @@ public class PageObjects : IPageItems
 {
    public PageObjects(ILoginPageInfo login, ILeadsPageInfo leads)
    {
-      LoginPage = new(login);
-      LeadsPage = new(leads);
+      LoginPage = new LoginPage(login);
+      LeadsPage = new LeadsPage(leads);
    }
-   public LoginPage LoginPage { get; }
-   public LeadsPage LeadsPage { get; }
+   public ILoginPage LoginPage { get; }
+   public ILeadsPage LeadsPage { get; }
 }
