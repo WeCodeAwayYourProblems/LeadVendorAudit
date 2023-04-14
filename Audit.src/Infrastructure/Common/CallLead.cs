@@ -7,7 +7,7 @@ public class CallLead : ICallLead
    public required IRegion CallerRegion { get; set; }
    public DateTime DateTime { get; set; }
    public required IPhoneNumber PhoneNumber { get; set; }
-   public TimeSpan CallDuration { get; set; }
+   public TimeSpan Duration { get; set; }
    public Billability? Billability { get; set; }
    public string? Notes { get; set; }
 }
